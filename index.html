@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Send Mails</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script type="text/javascript">
+      const mailList = [
+        'abc123@gmail.com',
+        'def546@gmail.com',
+        'ghi422@gmail.com',
+        'jkl576@gmail.com',
+        'mno675@gmail.com',
+        'pqr763@gmail.com',
+        'stu535@gmail.com',
+        'vwx354@gmail.com',
+        'xyz367@gmail.com',
+      ];
+      sendEmail = () => {
+        Email.send({
+          Host: 'smtp.gmail.com',
+          Username: 'myName@gmail.com',
+          Password: '*******',
+          To: mailList.join(', '),
+          From: 'myEmail@gmail.com',
+          Subject: 'Test mail sender',
+          Body: 'Testing mail sender body part',
+          html: '<h1>Hello Receiver</h1><p>Congrats on this mail</p>',
+        })
+          .then((message) => {
+            alert(
+              'mail sent successfully!!,open console to see success message.'
+            );
+            console.log(message);
+          })
+          .catch((err) => {
+            alert('Mail send fail!!,open console to see error message.');
+            console.log(err);
+          });
+      };
+    </script>
+  </head>
+  <body>
+    <h2>Send mail to multiple address:</h2>
+    <ul style="font-style: oblique">
+      <li>abc123@gmail.com</li>
+      <li>def546@gmail.com</li>
+      <li>ghi422@gmail.com</li>
+      <li>jkl576@gmail.com</li>
+      <li>mno675@gmail.com</li>
+      <li>pqr763@gmail.com</li>
+      <li>stu535@gmail.com</li>
+      <li>vwx354@gmail.com</li>
+      <li>xyz367@gmail.com</li>
+    </ul>
+    <p>
+      <strong>Click on "SEND" button to Proceed.</strong><br />
+      (Make sure to open network tab to see the status)
+    </p>
+    <input type="button" value="Send Email" onclick="sendEmail()" />
+  </body>
+</html>
